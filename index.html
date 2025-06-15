@@ -1,175 +1,173 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ксюша, з Днем народження!</title>
-    <style>
-        body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            background-color: #fff8e1;
-            margin: 0;
-            padding: 20px;
-            text-align: center;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ксюша, з Днем народження!</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background-color: #fff8e1;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
 
-        h2 {
-            color: #4e342e;
-            font-size: 26px;
-            margin-bottom: 10px;
-        }
+    h2 {
+      color: #4e342e;
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
 
-        p {
-            color: #6d4c41;
-            font-size: 18px;
-        }
+    p {
+      color: #6d4c41;
+      font-size: 18px;
+    }
 
-        #capture {
-            position: relative;
-            width: 100%;
-            max-width: 500px;
-            aspect-ratio: 2/3;
-            margin: 20px auto;
-            overflow: hidden;
-        }
+    #capture {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      aspect-ratio: 2/3;
+      margin: 20px auto;
+      overflow: hidden;
+    }
 
-        #vase {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-        }
+    #vase {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
 
-        #flowers-container {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-        }
+    #flowers-container {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
 
-        .fancy-button {
-            margin: 8px;
-            background-color: #795548;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 20px;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s;
-            animation: pulse 2s infinite;
-        }
+    .fancy-button {
+      margin: 8px;
+      background-color: #795548;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 20px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      animation: pulse 2s infinite;
+    }
 
-            .fancy-button:hover {
-                background-color: #5d4037;
-            }
+    .fancy-button:hover {
+      background-color: #5d4037;
+    }
 
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
 
-            50% {
-                transform: scale(1.05);
-            }
+    .flower {
+      position: absolute;
+      width: 60px;
+      animation: floatIn 1s ease-out forwards, rotateFlower 4s linear infinite;
+      opacity: 0;
+      transform: scale(0.5);
+    }
 
-            100% {
-                transform: scale(1);
-            }
-        }
+    .compliment {
+      position: absolute;
+      color: #3e2723;
+      padding: 6px 10px;
+      font-size: 14px;
+      border-radius: 12px;
+      max-width: 160px;
+      text-align: center;
+      animation: fadeIn 1s ease-in;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: background-color 0.5s;
+    }
 
-        .flower {
-            position: absolute;
-            width: 60px;
-            animation: floatIn 1s ease-out forwards, rotateFlower 4s linear infinite;
-            opacity: 0;
-            transform: scale(0.5);
-        }
+    .eng {
+      font-family: Arial, Helvetica, sans-serif !important;
+      font-weight: normal !important;
+    }
 
-        .compliment {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.85);
-            color: #3e2723;
-            padding: 6px 10px;
-            font-size: 14px;
-            border-radius: 12px;
-            max-width: 140px;
-            text-align: center;
-            animation: fadeIn 1s ease-in;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-        }
+    @keyframes floatIn {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
 
-        .eng {
-            font-family: Arial, Helvetica, sans-serif !important;
-            font-weight: normal !important;
-        }
+    @keyframes rotateFlower {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
 
-        @keyframes floatIn {
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
 
-        @keyframes rotateFlower {
-            from {
-                transform: rotate(0deg);
-            }
+    #final-message {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #4caf50;
+      display: none;
+    }
 
-            to {
-                transform: rotate(360deg);
-            }
-        }
+    @media (max-width: 600px) {
+      .fancy-button {
+        width: 90%;
+        font-size: 14px;
+      }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
+      .compliment {
+        font-size: 12px;
+        max-width: 130px;
+      }
 
-            to {
-                opacity: 1;
-            }
-        }
-
-        #final-message {
-            margin-top: 20px;
-            font-size: 20px;
-            color: #4caf50;
-            display: none;
-        }
-
-        @media (max-width: 600px) {
-            .fancy-button {
-                width: 90%;
-                font-size: 14px;
-            }
-
-            .compliment {
-                font-size: 12px;
-            }
-
-            .flower {
-                width: 40px;
-            }
-        }
-    </style>
+      .flower {
+        width: 40px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h2>🥳 Ксюша, з 45-річчям! 🥳</h2>
-    <p>НАТИСКАЙ — ДОДАЙ КВІТКУ!</p>
+  <h2>🥳 Ксюша, з 45-річчям! 🥳</h2>
+  <p>НАТИСКАЙ — ДОДАЙ КВІТКУ!</p>
 
-    <div id="capture">
-        <img id="vase" src="https://i.postimg.cc/fRFSskh4/pngwing-com-8.png" alt="Ваза">
-        <div id="flowers-container"></div>
-    </div>
+  <div id="capture">
+    <img id="vase" src="https://i.postimg.cc/fRFSskh4/pngwing-com-8.png" alt="Ваза">
+    <div id="flowers-container"></div>
+  </div>
 
-    <div>
-        <button onclick="addFlower()" class="fancy-button">➕ Додати квітку</button>
-        <button onclick="clearFlowers()" class="fancy-button" style="background-color: #8d6e63;">🧹 Очистити</button>
-    </div>
+  <div>
+    <button onclick="addFlower()" class="fancy-button">➕ Додати квітку</button>
+    <button onclick="clearFlowers()" class="fancy-button" style="background-color: #8d6e63;">🧹 Очистити</button>
+  </div>
 
-    <p id="final-message">🌸 Квіти, любов, радість — святкуємо! 🌸</p>
+  <p id="final-message">🌸 Квіти, любов, радість — святкуємо! 🌸</p>
 
-    <script>
+  <script>
     const wishes = [
       "Ксюша, ти — наш <span class='eng'>Wi-Fi</span> щастя!",
       "Ти — <span class='eng'>iOS</span> життя з душею.",
@@ -224,6 +222,11 @@
       "https://i.postimg.cc/vZDxCfkL/pngwing-com-10.png"
     ];
 
+    const pastelColors = [
+      "#ffe0f0", "#e0f7fa", "#f0f4c3", "#fce4ec", "#e1bee7",
+      "#d1c4e9", "#c8e6c9", "#fff9c4", "#ffe082", "#b2dfdb"
+    ];
+
     let flowerCount = 0;
 
     function addFlower() {
@@ -234,7 +237,6 @@
 
       flower.style.top = Math.random() * 60 + "%";
       flower.style.left = Math.random() * 80 + "%";
-
       container.appendChild(flower);
 
       const text = document.createElement('div');
@@ -242,6 +244,7 @@
       text.innerHTML = wishes[flowerCount % wishes.length];
       text.style.top = (parseFloat(flower.style.top) + 5) + "%";
       text.style.left = (parseFloat(flower.style.left) + 3) + "%";
+      text.style.backgroundColor = pastelColors[Math.floor(Math.random() * pastelColors.length)];
       container.appendChild(text);
 
       flowerCount++;
@@ -257,6 +260,6 @@
       document.getElementById('final-message').style.display = 'none';
       flowerCount = 0;
     }
-    </script>
+  </script>
 </body>
 </html>
